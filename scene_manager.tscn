@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsw6n87ixuvds"]
+
+[ext_resource type="Script" path="res://scene_manager.gd" id="1_fok88"]
+[ext_resource type="PackedScene" uid="uid://bk5yl6n61fd15" path="res://level.tscn" id="2_ppjl7"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_fok88")
+
+[node name="Level" parent="." instance=ExtResource("2_ppjl7")]
+
+[connection signal="battle_transition" from="Level" to="." method="_on_level_battle_transition"]

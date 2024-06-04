@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlb8vgyomykif"]
+
+[ext_resource type="Script" path="res://big_enemy.gd" id="1_rcb6o"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cax3d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kmify"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2hq11"]
+height = 1.99937
+radius = 0.549441
+
+[node name="BigEnemy" type="CharacterBody3D"]
+script = ExtResource("1_rcb6o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_cax3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_kmify")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_2hq11")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
